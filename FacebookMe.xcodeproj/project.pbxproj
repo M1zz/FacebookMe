@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A559351F24991A6700E6EEC1 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A559351E24991A6700E6EEC1 /* UIView+Ext.swift */; };
+		A559352124991C0400E6EEC1 /* FBMeBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A559352024991C0400E6EEC1 /* FBMeBaseViewController.swift */; };
 		A5A29D99248FBD8600610CC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A29D98248FBD8600610CC7 /* AppDelegate.swift */; };
 		A5A29D9B248FBD8600610CC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A29D9A248FBD8600610CC7 /* SceneDelegate.swift */; };
-		A5A29D9D248FBD8600610CC7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A29D9C248FBD8600610CC7 /* ViewController.swift */; };
-		A5A29DA0248FBD8600610CC7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5A29D9E248FBD8600610CC7 /* Main.storyboard */; };
+		A5A29D9D248FBD8600610CC7 /* FBMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A29D9C248FBD8600610CC7 /* FBMeViewController.swift */; };
 		A5A29DA2248FBD8A00610CC7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5A29DA1248FBD8A00610CC7 /* Assets.xcassets */; };
 		A5A29DA5248FBD8A00610CC7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5A29DA3248FBD8A00610CC7 /* LaunchScreen.storyboard */; };
 		A5A29DB0248FBD8A00610CC7 /* FacebookMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A29DAF248FBD8A00610CC7 /* FacebookMeTests.swift */; };
@@ -27,11 +28,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A559351E24991A6700E6EEC1 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		A559352024991C0400E6EEC1 /* FBMeBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBMeBaseViewController.swift; sourceTree = "<group>"; };
 		A5A29D95248FBD8600610CC7 /* FacebookMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FacebookMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5A29D98248FBD8600610CC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5A29D9A248FBD8600610CC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A5A29D9C248FBD8600610CC7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A5A29D9F248FBD8600610CC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A5A29D9C248FBD8600610CC7 /* FBMeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBMeViewController.swift; sourceTree = "<group>"; };
 		A5A29DA1248FBD8A00610CC7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5A29DA4248FBD8A00610CC7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5A29DA6248FBD8A00610CC7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -58,6 +60,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A5593523249A4A9D00E6EEC1 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A559352024991C0400E6EEC1 /* FBMeBaseViewController.swift */,
+				A5A29D9C248FBD8600610CC7 /* FBMeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		A5A29D8C248FBD8600610CC7 = {
 			isa = PBXGroup;
 			children = (
@@ -79,13 +90,13 @@
 		A5A29D97248FBD8600610CC7 /* FacebookMe */ = {
 			isa = PBXGroup;
 			children = (
+				A5593523249A4A9D00E6EEC1 /* ViewController */,
 				A5A29D98248FBD8600610CC7 /* AppDelegate.swift */,
 				A5A29D9A248FBD8600610CC7 /* SceneDelegate.swift */,
-				A5A29D9C248FBD8600610CC7 /* ViewController.swift */,
-				A5A29D9E248FBD8600610CC7 /* Main.storyboard */,
 				A5A29DA1248FBD8A00610CC7 /* Assets.xcassets */,
 				A5A29DA3248FBD8A00610CC7 /* LaunchScreen.storyboard */,
 				A5A29DA6248FBD8A00610CC7 /* Info.plist */,
+				A559351E24991A6700E6EEC1 /* UIView+Ext.swift */,
 			);
 			path = FacebookMe;
 			sourceTree = "<group>";
@@ -182,7 +193,6 @@
 			files = (
 				A5A29DA5248FBD8A00610CC7 /* LaunchScreen.storyboard in Resources */,
 				A5A29DA2248FBD8A00610CC7 /* Assets.xcassets in Resources */,
-				A5A29DA0248FBD8600610CC7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,9 +210,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5A29D9D248FBD8600610CC7 /* ViewController.swift in Sources */,
+				A559351F24991A6700E6EEC1 /* UIView+Ext.swift in Sources */,
+				A5A29D9D248FBD8600610CC7 /* FBMeViewController.swift in Sources */,
 				A5A29D99248FBD8600610CC7 /* AppDelegate.swift in Sources */,
 				A5A29D9B248FBD8600610CC7 /* SceneDelegate.swift in Sources */,
+				A559352124991C0400E6EEC1 /* FBMeBaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,14 +237,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A5A29D9E248FBD8600610CC7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A5A29D9F248FBD8600610CC7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A5A29DA3248FBD8A00610CC7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
