@@ -8,7 +8,9 @@
 
 import UIKit
 
-class FMMeBaseCell: UITableViewCell {
+class FBMeBaseCell: UITableViewCell {
+    static let identifier = "FBMeBaseCell"
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
     }

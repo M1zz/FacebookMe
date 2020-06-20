@@ -8,7 +8,7 @@
 
 import UIKit
 
-public struct Spec {
+public struct Specs {
     public struct Color {
         public let facebook = UIColor(hex: 0x4267B2)
         public let red = UIColor.red

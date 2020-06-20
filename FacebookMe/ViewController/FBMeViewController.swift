@@ -9,15 +9,22 @@
 import UIKit
 
 class FBMeViewController: FBMeBaseViewController {
-    static let identifier = "FBMeBaseCell"
+    typealias RowModel = [String: String]
+
+    private var tableView = UITableView(frame: .zero, style: .grouped)
+    private var user = UserProfile(name: "이현호", avatarName: "bayMax", education: "CNU")
     
-    var tableView = UITableView()
+    private var tableViewDataSource: [[String: Any]] {
+        get {
+            return TableKeys.fetchData(withUser: user)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = "FaceBook"
-        navigationController?.navigationBar.barTintColor = UIColor(hex: 0x4267B2)
+        navigationController?.navigationBar.barTintColor = Specs.color.facebook
         configureTableView()
     }
     
@@ -29,115 +36,114 @@ class FBMeViewController: FBMeBaseViewController {
         tableView.dataSource = self
         // get rowHeight
         // register cell
+        tableView.register(FBMeBaseCell.self, forCellReuseIdentifier: FBMeBaseCell.identifier)
         // set constrains
         tableView.pin(to: view)
     }
     
-    private func rows(at section: Int) -> Int {
-        let count:[Int] = [1,7,0,1,3,1]
-        return count[section]
+    // 섹션을 입력 -> data의 한 섹션의 데이터 반환
+    private func rows(at section: Int) -> [Any] {
+        return tableViewDataSource[section][TableKeys.Rows] as! [Any]
     }
     
-    private func getHeaderTitle(at section: Int) -> String{
-        let header = [" ", " ", " ", "FAVORITE", " ", " "]
-        
-        return header[section]
+    // IndexPath 입력 -> 섹션의 row 데이터 반환
+    private func rowModel(at indexPath: IndexPath) -> RowModel {
+        return rows(at: indexPath.section)[indexPath.row] as! RowModel
     }
     
-    private func tableViewTextDataSource(at indexPath: IndexPath) -> String {
-        let title = ["Friends", "Events", "Groups", "CMU", "Town Hall", "Instant Games", "See More..."]
-        return title[indexPath.row]
-    }
-    
-    private func tableViewImageDataSource(at indexPath: IndexPath) -> String {
-        let image = ["fb_friends", "fb_events", "fb_groups", "fb_education", "fb_town_hall", "fb_games", "fb_placeholder"]
-        
-        return image[indexPath.row]
-    }
-    
-    private func tableViewSettingDataSource(at indexPath: IndexPath) -> String {
-        let title = ["Settings", "Privacy Shortcuts", "Help and Support"]
-        return title[indexPath.row]
-    }
-    
-    private func tableViewSettingImageDataSource(at indexPath: IndexPath) -> String {
-        let image = ["fb_settings", "fb_privacy_shortcuts", "fb_help_and_support"]
-        
-        return image[indexPath.row]
+    private func title(at section: Int) -> String? {
+        return tableViewDataSource[section][TableKeys.Section] as? String
     }
 }
 
 extension FBMeViewController: UITableViewDataSource {
+    // Number of Section == Data Source's length
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+        return tableViewDataSource.count
     }
     
+    // Each Section has different rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rows(at: section)
+        return rows(at: section).count
     }
     
+    // Get Title of Section
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-      return getHeaderTitle(at: section)
+        return title(at: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let modelForRow = rowModel(at: indexPath)
         var cell = UITableViewCell()
         
-        switch indexPath.section {
-        case 0:
-            cell = UITableViewCell.init(style: .subtitle, reuseIdentifier: nil)
-            cell.textLabel?.text = "이현호"
-            cell.imageView?.image = UIImage(named: "bayMax")
-            cell.detailTextLabel?.text = "IOS 개발자"
-        case 1:
-            cell = UITableViewCell.init(style: .default, reuseIdentifier: nil)
-            let titleName = tableViewTextDataSource(at: indexPath)
-            let imageName = tableViewImageDataSource(at: indexPath)
-            cell.textLabel?.text = titleName
-            cell.imageView?.image = UIImage(named: imageName)
-        case 3:
-            cell = UITableViewCell.init(style: .default, reuseIdentifier: nil)
-            let titleName = "Add Favorites..."
-            let imageName = "fb_placeholder"
-            cell.textLabel?.text = titleName
-            cell.imageView?.image = UIImage(named: imageName)
-        case 4:
-            cell = UITableViewCell.init(style: .default, reuseIdentifier: nil)
-            let titleName = tableViewSettingDataSource(at: indexPath)
-            let imageName = tableViewSettingImageDataSource(at: indexPath)
-            cell.textLabel?.text = titleName
-            cell.imageView?.image = UIImage(named: imageName)
-        case 5:
-            cell = UITableViewCell.init(style: .default, reuseIdentifier: nil)
-            let titleName = "Log Out"
-            cell.textLabel?.text = titleName
-            cell.textLabel?.textColor = .red
-            cell.textLabel?.textAlignment = .center
-        default:
-            print("error")
+        guard let title = modelForRow[TableKeys.Title] else {
+            return cell
         }
-
+        
+        // profile needs subTitle
+        if title == user.name {
+            cell = UITableViewCell.init(style: .subtitle, reuseIdentifier: nil)
+        } else {
+            cell = tableView.dequeueReusableCell(withIdentifier: FBMeBaseCell.identifier, for: indexPath)
+        }
+        
+        // set title
+        cell.textLabel?.text = title
+        if title == user.name {
+            cell.detailTextLabel?.text = modelForRow[TableKeys.SubTitle]
+        }
+        
+        // set image
+        if let imageName = modelForRow[TableKeys.ImageName] {
+            cell.imageView?.image = UIImage(named: imageName)
+        } else {
+            cell.imageView?.image = UIImage(named: Specs.imageName.placeholder)
+        }
+        
+        
         return cell
     }
 }
 
 extension FBMeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        cell.accessoryType = .disclosureIndicator
-    }
-
-     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       tableView.deselectRow(at: indexPath, animated: true)
+        
+        let modelForRow = rowModel(at: indexPath)
+        
+        guard let title = modelForRow[TableKeys.Title] else {
+            return
+        }
+        
+        // set blue color to moremenu
+        if title == TableKeys.seeMore || title == TableKeys.addFavorites {
+            cell.textLabel?.textColor = Specs.color.facebook
+            cell.accessoryType = .none
+        } else if title == TableKeys.logout { // set logout
+            cell.textLabel?.centerXAnchor.constraint(equalTo: cell.centerXAnchor).isActive = true
+            cell.textLabel?.textColor = Specs.color.red
+            cell.textLabel?.textAlignment = .center
+            cell.accessoryType = .none
+        } else {
+            cell.accessoryType = .disclosureIndicator
+        }
     }
     
-}
-
-extension UIColor {
-    convenience init(r: Int, g: Int, b: Int, a: CGFloat) {
-      self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: a)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    convenience init(hex: Int) {
-      self.init(r: (hex & 0xff0000) >> 16, g: (hex & 0xff00) >> 8, b: (hex & 0xff), a: 1)
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let modelForRow = rowModel(at: indexPath)
+        
+        guard let title = modelForRow[TableKeys.Title] else {
+            return 0.0
+        }
+        
+        if title == user.name {
+            return 64.0
+        } else {
+            return 44.0
+        }
     }
+    
 }
