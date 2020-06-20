@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A559351F24991A6700E6EEC1 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A559351E24991A6700E6EEC1 /* UIView+Ext.swift */; };
 		A559352124991C0400E6EEC1 /* FBMeBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A559352024991C0400E6EEC1 /* FBMeBaseViewController.swift */; };
+		A5593526249DF66700E6EEC1 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5593525249DF66700E6EEC1 /* UserProfile.swift */; };
+		A5593529249DF97A00E6EEC1 /* FMMeBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5593528249DF97A00E6EEC1 /* FMMeBaseCell.swift */; };
 		A5A29D99248FBD8600610CC7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A29D98248FBD8600610CC7 /* AppDelegate.swift */; };
 		A5A29D9B248FBD8600610CC7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A29D9A248FBD8600610CC7 /* SceneDelegate.swift */; };
 		A5A29D9D248FBD8600610CC7 /* FBMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A29D9C248FBD8600610CC7 /* FBMeViewController.swift */; };
@@ -30,6 +32,8 @@
 /* Begin PBXFileReference section */
 		A559351E24991A6700E6EEC1 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		A559352024991C0400E6EEC1 /* FBMeBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBMeBaseViewController.swift; sourceTree = "<group>"; };
+		A5593525249DF66700E6EEC1 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		A5593528249DF97A00E6EEC1 /* FMMeBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FMMeBaseCell.swift; sourceTree = "<group>"; };
 		A5A29D95248FBD8600610CC7 /* FacebookMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FacebookMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5A29D98248FBD8600610CC7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5A29D9A248FBD8600610CC7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +73,22 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		A5593524249DF62C00E6EEC1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A5593525249DF66700E6EEC1 /* UserProfile.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A5593527249DF95A00E6EEC1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A5593528249DF97A00E6EEC1 /* FMMeBaseCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		A5A29D8C248FBD8600610CC7 = {
 			isa = PBXGroup;
 			children = (
@@ -90,9 +110,11 @@
 		A5A29D97248FBD8600610CC7 /* FacebookMe */ = {
 			isa = PBXGroup;
 			children = (
+				A5593524249DF62C00E6EEC1 /* Model */,
 				A5593523249A4A9D00E6EEC1 /* ViewController */,
-				A5A29D98248FBD8600610CC7 /* AppDelegate.swift */,
+				A5593527249DF95A00E6EEC1 /* View */,
 				A5A29D9A248FBD8600610CC7 /* SceneDelegate.swift */,
+				A5A29D98248FBD8600610CC7 /* AppDelegate.swift */,
 				A5A29DA1248FBD8A00610CC7 /* Assets.xcassets */,
 				A5A29DA3248FBD8A00610CC7 /* LaunchScreen.storyboard */,
 				A5A29DA6248FBD8A00610CC7 /* Info.plist */,
@@ -210,8 +232,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5593529249DF97A00E6EEC1 /* FMMeBaseCell.swift in Sources */,
 				A559351F24991A6700E6EEC1 /* UIView+Ext.swift in Sources */,
 				A5A29D9D248FBD8600610CC7 /* FBMeViewController.swift in Sources */,
+				A5593526249DF66700E6EEC1 /* UserProfile.swift in Sources */,
 				A5A29D99248FBD8600610CC7 /* AppDelegate.swift in Sources */,
 				A5A29D9B248FBD8600610CC7 /* SceneDelegate.swift in Sources */,
 				A559352124991C0400E6EEC1 /* FBMeBaseViewController.swift in Sources */,
