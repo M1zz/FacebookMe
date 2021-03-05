@@ -8,8 +8,8 @@
 
 import UIKit
 
-class FBMeBaseCell: UITableViewCell {
-    static let identifier = "FBMeBaseCell"
+class FBMeImageTitleCell: UITableViewCell {
+    static let identifier = "FBMeImageTitleCell"
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)

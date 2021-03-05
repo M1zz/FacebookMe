@@ -12,13 +12,14 @@ class FBMeViewController: FBMeBaseViewController {
     typealias RowModel = [String: String]
 
     private var tableView = UITableView(frame: .zero, style: .grouped)
-    private var user = UserProfile(name: "이현호", avatarName: "bayMax", education: "CNU")
+    private var user = UserProfile(name: "Leeo", avatarName: "bayMax", education: "CNU")
     
     private var tableViewDataSource: [[String: Any]] {
         get {
             return TableKeys.fetchData(withUser: user)
         }
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,28 +29,29 @@ class FBMeViewController: FBMeBaseViewController {
         configureTableView()
     }
     
+    
     private func configureTableView() {
         // add view
         view.addSubview(tableView)
         // set delegate
         tableView.delegate = self
         tableView.dataSource = self
-        // get rowHeight
-        // register cell
-        tableView.register(FBMeBaseCell.self, forCellReuseIdentifier: FBMeBaseCell.identifier)
-        // set constrains
+        tableView.register(FBMeImageTitleCell.self, forCellReuseIdentifier: FBMeImageTitleCell.identifier)
         tableView.pin(to: view)
     }
+    
     
     // 섹션을 입력 -> data의 한 섹션의 데이터 반환
     private func rows(at section: Int) -> [Any] {
         return tableViewDataSource[section][TableKeys.Rows] as! [Any]
     }
     
+    
     // IndexPath 입력 -> 섹션의 row 데이터 반환
     private func rowModel(at indexPath: IndexPath) -> RowModel {
         return rows(at: indexPath.section)[indexPath.row] as! RowModel
     }
+    
     
     private func title(at section: Int) -> String? {
         return tableViewDataSource[section][TableKeys.Section] as? String
@@ -62,15 +64,18 @@ extension FBMeViewController: UITableViewDataSource {
         return tableViewDataSource.count
     }
     
+    
     // Each Section has different rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rows(at: section).count
     }
     
+    
     // Get Title of Section
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return title(at: section)
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let modelForRow = rowModel(at: indexPath)
@@ -84,7 +89,7 @@ extension FBMeViewController: UITableViewDataSource {
         if title == user.name {
             cell = UITableViewCell.init(style: .subtitle, reuseIdentifier: nil)
         } else {
-            cell = tableView.dequeueReusableCell(withIdentifier: FBMeBaseCell.identifier, for: indexPath)
+            cell = tableView.dequeueReusableCell(withIdentifier: FBMeImageTitleCell.identifier, for: indexPath)
         }
         
         // set title
@@ -99,7 +104,6 @@ extension FBMeViewController: UITableViewDataSource {
         } else {
             cell.imageView?.image = UIImage(named: Specs.imageName.placeholder)
         }
-        
         
         return cell
     }
@@ -128,9 +132,11 @@ extension FBMeViewController: UITableViewDelegate {
         }
     }
     
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let modelForRow = rowModel(at: indexPath)

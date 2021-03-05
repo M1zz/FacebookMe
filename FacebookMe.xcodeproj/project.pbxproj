@@ -95,15 +95,13 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		A559352A249DFEB100E6EEC1 /* Helper */ = {
+		A559352A249DFEB100E6EEC1 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				A559351E24991A6700E6EEC1 /* UIView+Ext.swift */,
 				A559352B249DFEC000E6EEC1 /* Specs.swift */,
-				A559352D249E0A2400E6EEC1 /* UIColor+Extension.swift */,
 				A559352F249E19C000E6EEC1 /* TableKeys.swift */,
 			);
-			path = Helper;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		A5A29D8C248FBD8600610CC7 = {
@@ -127,7 +125,8 @@
 		A5A29D97248FBD8600610CC7 /* FacebookMe */ = {
 			isa = PBXGroup;
 			children = (
-				A559352A249DFEB100E6EEC1 /* Helper */,
+				A5DD2B5625F24D7F0078F916 /* Extensions */,
+				A559352A249DFEB100E6EEC1 /* Utilities */,
 				A5593524249DF62C00E6EEC1 /* Model */,
 				A5593523249A4A9D00E6EEC1 /* ViewController */,
 				A5593527249DF95A00E6EEC1 /* View */,
@@ -147,6 +146,15 @@
 				A5A29DB1248FBD8A00610CC7 /* Info.plist */,
 			);
 			path = FacebookMeTests;
+			sourceTree = "<group>";
+		};
+		A5DD2B5625F24D7F0078F916 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A559351E24991A6700E6EEC1 /* UIView+Ext.swift */,
+				A559352D249E0A2400E6EEC1 /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
